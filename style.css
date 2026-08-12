@@ -1,316 +1,187 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,
-body {
-    width: 100%;
-    min-height: 100%;
+html {
+    scroll-behavior: smooth;
+}
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
 }
 
 
-/* =========================
-   LOCK SCREEN
-========================= */
+/* =====================================================
+   PAGE 1 — LOCK SCREEN
+===================================================== */
 
 #lockedScreen {
-
     min-height: 100vh;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     padding: 20px;
 
     background:
-        radial-gradient(
-            circle at top,
-            #ffb6c1,
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #ff758c,
-            #ff7eb3,
-            #a18cd1
-        );
+        radial-gradient(circle at top, #ffb6c1, transparent 45%),
+        linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
 
     color: white;
-
 }
 
-
 .lock-card {
-
     width: 100%;
-
     max-width: 520px;
-
     text-align: center;
-
     padding: 40px 25px;
 
     border-radius: 30px;
 
-    background:
-        rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
 
-    backdrop-filter:
-        blur(15px);
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,0.25);
-
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
-
 
 .lock-icon {
-
     font-size: 80px;
-
-    animation:
-        giftBounce 1.5s infinite;
-
+    animation: giftBounce 1.5s infinite;
 }
-
 
 .lock-card h1 {
-
     font-size: 34px;
-
     margin: 20px 0;
-
 }
-
 
 .lock-card p {
-
     font-size: 18px;
-
     line-height: 1.6;
-
 }
-
 
 .coming-text {
-
     margin-bottom: 10px;
-
 }
 
 
-/* =========================
+/* =====================================================
    COUNTDOWN
-========================= */
+===================================================== */
 
 .countdown {
-
     display: flex;
-
     justify-content: center;
-
     gap: 12px;
-
     margin: 30px 0;
-
 }
-
 
 .countdown div {
-
     min-width: 75px;
-
     padding: 12px 8px;
 
-    background:
-        rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.22);
 
     border-radius: 15px;
-
 }
-
 
 .countdown span {
-
     display: block;
-
     font-size: 28px;
-
     font-weight: bold;
-
 }
-
 
 .countdown small {
-
     font-size: 12px;
-
 }
 
 
-/* =========================
-   BIRTHDAY PAGE
-========================= */
+/* =====================================================
+   PAGE 1 — BIRTHDAY
+===================================================== */
 
 #birthdayPage {
-
     min-height: 100vh;
 
     display: none;
 
     position: relative;
-
     overflow: hidden;
 
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
-
     color: white;
 
     background:
-
-        radial-gradient(
-            circle at 20% 20%,
-            #ffd6e0,
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 80% 30%,
-            #e3d0ff,
-            transparent 25%
-        ),
-
-        linear-gradient(
-            135deg,
-            #ff758c,
-            #ff7eb3,
-            #a18cd1
-        );
-
+        radial-gradient(circle at 20% 20%, #ffd6e0, transparent 25%),
+        radial-gradient(circle at 80% 30%, #e3d0ff, transparent 25%),
+        linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
 }
 
-
 .birthday-container {
-
     position: relative;
-
     z-index: 10;
 
     width: 100%;
-
     max-width: 700px;
 
     padding: 30px 20px;
-
 }
-
 
 .small-title {
-
     font-size: 15px;
-
     letter-spacing: 2px;
-
     margin-bottom: 20px;
-
 }
-
 
 .birthday-container h1 {
-
     font-size: 55px;
-
     line-height: 1.2;
 
-    text-shadow:
-        0 5px 15px
-        rgba(0,0,0,0.2);
-
+    text-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-
 
 .birthday-container h1 span {
-
     display: block;
-
     color: #fff700;
-
 }
-
 
 .subtitle {
-
     font-size: 20px;
-
     line-height: 1.6;
-
     margin-top: 20px;
-
 }
-
-
-/* =========================
-   CAKE
-========================= */
 
 .cake-area {
-
     margin: 25px 0;
-
     position: relative;
-
 }
-
 
 .cake {
-
     font-size: 130px;
-
-    animation:
-        cakeBounce 2s infinite;
-
+    animation: cakeBounce 2s infinite;
 }
 
-
 .flame {
-
     font-size: 35px;
 
     position: absolute;
-
     top: -10px;
-
     left: 50%;
 
     transform: translateX(-50%);
 
-    animation:
-        flame 0.6s infinite alternate;
-
+    animation: flame 0.6s infinite alternate;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
-
 .surprise-button {
-
     border: none;
 
     padding: 17px 35px;
@@ -318,183 +189,104 @@ body {
     border-radius: 50px;
 
     background: white;
-
     color: #ff4d6d;
 
     font-size: 20px;
-
     font-weight: bold;
 
     cursor: pointer;
 
-    box-shadow:
-        0 10px 25px
-        rgba(0,0,0,0.25);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 
-    transition:
-        transform .3s,
-        box-shadow .3s;
-
+    transition: transform .3s, box-shadow .3s;
 }
-
 
 .surprise-button:hover {
-
-    transform:
-        scale(1.08);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,0.3);
-
+    transform: scale(1.08);
 }
 
 
-/* =========================
-   BALLOONS
-========================= */
+/* =====================================================
+   BALLOONS / HEARTS / SPARKLES
+===================================================== */
 
 .balloon {
-
     position: absolute;
-
     font-size: 65px;
 
-    animation:
-        floatBalloon 5s ease-in-out infinite;
-
+    animation: floatBalloon 5s ease-in-out infinite;
 }
-
 
 .balloon1 {
-
     left: 5%;
-
     top: 15%;
-
 }
-
 
 .balloon2 {
-
     right: 7%;
-
     top: 20%;
-
     animation-delay: 1s;
-
 }
-
 
 .balloon3 {
-
     left: 15%;
-
     bottom: 10%;
-
     animation-delay: 2s;
-
 }
-
-
-/* =========================
-   HEARTS
-========================= */
 
 .heart {
-
     position: absolute;
-
     font-size: 35px;
 
-    animation:
-        floatHeart 4s ease-in-out infinite;
-
+    animation: floatHeart 4s ease-in-out infinite;
 }
-
 
 .heart1 {
-
     top: 20%;
-
     left: 25%;
-
 }
-
 
 .heart2 {
-
     right: 25%;
-
     bottom: 20%;
-
     animation-delay: 1s;
-
 }
-
 
 .heart3 {
-
     left: 8%;
-
     top: 60%;
-
     animation-delay: 2s;
-
 }
-
-
-/* =========================
-   SPARKLES
-========================= */
 
 .sparkle {
-
     position: absolute;
-
     font-size: 30px;
 
-    animation:
-        sparkle 1.5s infinite alternate;
-
+    animation: sparkle 1.5s infinite alternate;
 }
-
 
 .sparkle1 {
-
     left: 30%;
-
     top: 10%;
-
 }
-
 
 .sparkle2 {
-
     right: 25%;
-
     top: 10%;
-
 }
-
 
 .sparkle3 {
-
     right: 10%;
-
     bottom: 20%;
-
 }
 
 
-/* =========================
+/* =====================================================
    CONFETTI
-========================= */
+===================================================== */
 
 #confetti {
-
     position: fixed;
-
     pointer-events: none;
 
     inset: 0;
@@ -502,78 +294,269 @@ body {
     overflow: hidden;
 
     z-index: 100;
-
 }
 
-
 .confetti-piece {
-
     position: absolute;
 
     top: -20px;
 
     width: 10px;
-
     height: 15px;
 
     background: white;
 
-    animation:
-        fall linear forwards;
-
+    animation: fall linear forwards;
 }
-
 
 .confetti-piece:nth-child(3n) {
-
     background: #fff700;
-
 }
-
 
 .confetti-piece:nth-child(3n+1) {
-
     background: #ff4d6d;
-
 }
-
 
 .confetti-piece:nth-child(3n+2) {
-
     background: #8be9fd;
-
 }
 
 
-/* =========================
+/* =====================================================
+   PAGE 2 — GALLERY
+===================================================== */
+
+body.gallery-page {
+    min-height: 100vh;
+
+    padding: 30px 20px;
+
+    background:
+        radial-gradient(circle at top, #ffd6e0, transparent 40%),
+        linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+}
+
+.heading {
+    text-align: center;
+
+    color: white;
+
+    font-size: 42px;
+
+    margin: 20px 0 35px;
+
+    text-shadow:
+        0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.frame {
+    position: relative;
+
+    padding: 10px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+
+    overflow: hidden;
+
+    transition:
+        transform .4s,
+        box-shadow .4s;
+}
+
+.frame:hover {
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.3);
+}
+
+.frame img {
+    display: block;
+
+    width: 100%;
+
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    transition:
+        transform .5s;
+}
+
+.frame:hover img {
+    transform: scale(1.08);
+}
+
+.center {
+    text-align: center;
+
+    margin: 40px 0 20px;
+}
+
+.center button {
+    border: none;
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #ff4d6d;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+
+    transition:
+        transform .3s;
+}
+
+.center button:hover {
+    transform: scale(1.08);
+}
+
+
+/* =====================================================
+   PAGE 3 — LETTER
+===================================================== */
+
+body.letter-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 20px;
+
+    background:
+        radial-gradient(circle at top, #ffd6e0, transparent 40%),
+        linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+}
+
+.letter {
+    width: 100%;
+
+    max-width: 800px;
+
+    padding: 45px 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf5,
+            #fff8e7
+        );
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.3);
+
+    position: relative;
+
+    animation:
+        letterOpen 1s ease;
+}
+
+.letter::before {
+
+    content: "💌";
+
+    position: absolute;
+
+    top: -35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 65px;
+}
+
+.letter h1 {
+
+    text-align: center;
+
+    color: #ff4d6d;
+
+    font-size: 38px;
+
+    margin-bottom: 30px;
+}
+
+.letter p {
+
+    white-space: pre-line;
+
+    color: #444;
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    text-align: left;
+}
+
+
+/* =====================================================
    ANIMATIONS
-========================= */
+===================================================== */
 
 @keyframes giftBounce {
 
-    0%,100% {
+    0%, 100% {
         transform: translateY(0);
     }
 
     50% {
         transform: translateY(-15px);
     }
-
 }
-
 
 @keyframes cakeBounce {
 
-    0%,100% {
+    0%, 100% {
         transform: translateY(0);
     }
 
     50% {
         transform: translateY(-10px);
     }
-
 }
-
 
 @keyframes flame {
 
@@ -588,13 +571,11 @@ body {
             translateX(-50%)
             scale(1.2);
     }
-
 }
-
 
 @keyframes floatBalloon {
 
-    0%,100% {
+    0%, 100% {
         transform:
             translateY(0)
             rotate(-5deg);
@@ -605,13 +586,11 @@ body {
             translateY(-30px)
             rotate(5deg);
     }
-
 }
-
 
 @keyframes floatHeart {
 
-    0%,100% {
+    0%, 100% {
         transform:
             translateY(0);
     }
@@ -620,9 +599,7 @@ body {
         transform:
             translateY(-25px);
     }
-
 }
-
 
 @keyframes sparkle {
 
@@ -635,109 +612,131 @@ body {
         opacity: 1;
         transform: scale(1.2);
     }
-
 }
-
 
 @keyframes fall {
 
     to {
-
         transform:
             translateY(110vh)
             rotate(720deg);
 
         opacity: 0;
+    }
+}
 
+@keyframes letterOpen {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(.9);
     }
 
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 600px) {
 
     .lock-card {
-
         padding: 30px 18px;
-
     }
-
 
     .lock-card h1 {
-
         font-size: 27px;
-
     }
-
 
     .lock-icon {
-
         font-size: 65px;
-
     }
-
 
     .countdown {
-
         gap: 6px;
-
     }
-
 
     .countdown div {
-
-        min-width: 65px;
-
+        min-width: 62px;
         padding: 10px 5px;
-
     }
-
 
     .countdown span {
-
-        font-size: 22px;
-
+        font-size: 21px;
     }
-
 
     .birthday-container h1 {
-
         font-size: 38px;
-
     }
-
 
     .subtitle {
-
         font-size: 17px;
-
     }
-
 
     .cake {
-
         font-size: 95px;
-
     }
-
 
     .balloon {
-
         font-size: 45px;
+    }
 
+    .surprise-button {
+        font-size: 17px;
+        padding: 14px 25px;
     }
 
 
-    .surprise-button {
+    /* Gallery mobile */
 
+    body.gallery-page {
+        padding: 20px 12px;
+    }
+
+    .heading {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .frame img {
+        height: 300px;
+    }
+
+
+    /* Letter mobile */
+
+    body.letter-page {
+        padding: 50px 15px 25px;
+    }
+
+    .letter {
+        padding: 40px 22px 30px;
+    }
+
+    .letter h1 {
+        font-size: 27px;
+    }
+
+    .letter p {
         font-size: 17px;
-
-        padding: 14px 25px;
-
+        line-height: 1.8;
     }
 
 }
