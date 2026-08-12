@@ -1,32 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>Birthday Surprise 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="home">
+<body>
 
-<div class="container">
+    <!-- LOCK / COUNTDOWN SCREEN -->
+    <div id="lockedScreen">
 
-<h1>🎉 Happy Birthday <span class="name">Anukriti</span> 🎉</h1>
+        <div class="lock-card">
 
-<div class="cake">
-🎂
-</div>
+            <div class="lock-icon">🎁</div>
 
-<p>May your day be filled with Happiness, Love and Smiles ❤️</p>
+            <h1>Your Birthday Surprise</h1>
 
-<button onclick="nextPage()">
-Open Birthday Memories 🎁
-</button>
+            <p class="coming-text">
+                Something special is waiting for you ❤️
+            </p>
 
-</div>
+            <p>It will open on <b>9 September</b> at <b>5:00 AM</b>.</p>
 
-<script src="script.js"></script>
+            <div class="countdown">
+
+                <div>
+                    <span id="days">00</span>
+                    <small>Days</small>
+                </div>
+
+                <div>
+                    <span id="hours">00</span>
+                    <small>Hours</small>
+                </div>
+
+                <div>
+                    <span id="minutes">00</span>
+                    <small>Minutes</small>
+                </div>
+
+                <div>
+                    <span id="seconds">00</span>
+                    <small>Seconds</small>
+                </div>
+
+            </div>
+
+            <p id="closedMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- BIRTHDAY PAGE -->
+    <div id="birthdayPage">
+
+        <!-- Floating decorations -->
+        <div class="balloon balloon1">🎈</div>
+        <div class="balloon balloon2">🎈</div>
+        <div class="balloon balloon3">🎈</div>
+
+        <div class="heart heart1">❤️</div>
+        <div class="heart heart2">💖</div>
+        <div class="heart heart3">💕</div>
+
+        <div class="sparkle sparkle1">✨</div>
+        <div class="sparkle sparkle2">⭐</div>
+        <div class="sparkle sparkle3">✨</div>
+
+
+        <div class="birthday-container">
+
+            <div class="small-title">
+                🎉 TODAY IS YOUR SPECIAL DAY 🎉
+            </div>
+
+            <h1>
+                Happy Birthday
+                <span>Anukriti</span>
+            </h1>
+
+            <p class="subtitle">
+                Wishing you a day filled with happiness,
+                love, laughter and beautiful memories ❤️
+            </p>
+
+
+            <!-- Cake -->
+            <div class="cake-area">
+
+                <div class="flame">🔥</div>
+
+                <div class="cake">
+                    🎂
+                </div>
+
+            </div>
+
+
+            <!-- Surprise button -->
+            <button class="surprise-button" onclick="openSurprise()">
+
+                🎁 Open Your Surprise
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONFETTI -->
+    <div id="confetti"></div>
+
+
+<script>
+
+    /*
+    ====================================================
+       BIRTHDAY TIME SETTINGS
+    ====================================================
+
+       Date: 9 September 2026
+       Start: 5:00 AM IST
+       End:   11:59 PM IST
+    */
+
+    const startTime =
+        new Date("2026-09-09T05:00:00+05:30");
+
+    const endTime =
+        new Date("2026-09-09T23:59:59+05:30");
+
+
+    const lockedScreen =
+        document.getElementById("lockedScreen");
+
+    const birthdayPage =
+        document.getElementById("birthdayPage");
+
+    const closedMessage =
+        document.getElementById("closedMessage");
+
+
+    function checkBirthdayTime() {
+
+        const now = new Date();
+
+
+        // Before birthday
+        if (now < startTime) {
+
+            lockedScreen.style.display = "flex";
+            birthdayPage.style.display = "none";
+
+            updateCountdown();
+
+        }
+
+        // Birthday is active
+        else if (now >= startTime && now <= endTime) {
+
+            lockedScreen.style.display = "none";
+            birthdayPage.style.display = "flex";
+
+            createConfetti();
+
+        }
+
+        // Birthday finished
+        else {
+
+            lockedScreen.style.display = "flex";
+            birthdayPage.style.display = "none";
+
+            document.querySelector(".lock-icon").innerHTML = "🔒";
+
+            document.querySelector(".lock-card h1").innerHTML =
+                "Birthday Surprise Closed";
+
+            document.querySelector(".coming-text").innerHTML =
+                "The special surprise has ended ❤️";
+
+            closedMessage.innerHTML =
+                "Thank you for visiting! 🎂💖";
+
+        }
+
+    }
+
+
+    // Countdown
+    function updateCountdown() {
+
+        const now = new Date();
+
+        const difference =
+            startTime - now;
+
+
+        if (difference <= 0) {
+            return;
+        }
+
+
+        const days =
+            Math.floor(
+                difference / (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (difference / (1000 * 60 * 60)) % 24
+            );
+
+
+        const minutes =
+            Math.floor(
+                (difference / (1000 * 60)) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        document.getElementById("days").innerText =
+            String(days).padStart(2, "0");
+
+        document.getElementById("hours").innerText =
+            String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").innerText =
+            String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").innerText =
+            String(seconds).padStart(2, "0");
+
+    }
+
+
+    /*
+       Surprise button
+       Goes to your gallery page
+    */
+
+    function openSurprise() {
+
+        createConfetti();
+
+        setTimeout(function() {
+
+            window.location.href =
+                "gallery.html";
+
+        }, 1000);
+
+    }
+
+
+    /*
+       Confetti
+    */
+
+    function createConfetti() {
+
+        const container =
+            document.getElementById("confetti");
+
+
+        for (let i = 0; i < 80; i++) {
+
+            const piece =
+                document.createElement("div");
+
+            piece.classList.add("confetti-piece");
+
+
+            piece.style.left =
+                Math.random() * 100 + "%";
+
+
+            piece.style.animationDelay =
+                Math.random() * 3 + "s";
+
+
+            piece.style.animationDuration =
+                (Math.random() * 3 + 2) + "s";
+
+
+            container.appendChild(piece);
+
+        }
+
+    }
+
+
+    // Run immediately
+    checkBirthdayTime();
+
+
+    // Update every second
+    setInterval(function() {
+
+        checkBirthdayTime();
+
+    }, 1000);
+
+</script>
 
 </body>
 </html>
