@@ -850,3 +850,112 @@ body.letter-page {
     }
 
 }
+
+/* =====================================================
+   PASSWORD BOX
+===================================================== */
+
+#passwordBox {
+    display: none;
+    margin-top: 25px;
+}
+
+#passwordBox p {
+    margin-bottom: 15px;
+}
+
+#passwordInput {
+    width: 100%;
+    max-width: 320px;
+
+    padding: 14px 18px;
+
+    border: 2px solid rgba(255,255,255,0.5);
+
+    border-radius: 30px;
+
+    outline: none;
+
+    font-size: 17px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #333;
+}
+
+#passwordInput:focus {
+    border-color: white;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,255,255,0.6);
+}
+
+#passwordBox button {
+
+    display: block;
+
+    margin: 18px auto 10px;
+
+    padding: 14px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: white;
+
+    color: #ff4d6d;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+}
+
+#passwordBox button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.25);
+}
+
+#passwordMessage {
+
+    min-height: 25px;
+
+    font-weight: bold;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #passwordInput {
+
+        max-width: 280px;
+
+        font-size: 16px;
+
+    }
+
+    #passwordBox button {
+
+        font-size: 17px;
+
+        padding: 13px 27px;
+
+    }
+
+}
