@@ -337,19 +337,25 @@ body.gallery-page {
 }
 
 .heading {
+    width: 100%;
+
     text-align: center;
 
     color: white;
 
-    font-size: 42px;
+    font-size: 38px;
 
-    margin: 20px 0 35px;
+    margin: 10px 0 30px;
 
     text-shadow:
-        0 5px 15px rgba(0,0,0,0.2);
+        0 5px 15px rgba(0,0,0,0.25);
 }
 
+
+/* PHOTO GRID */
+
 .gallery {
+
     width: 100%;
 
     max-width: 1100px;
@@ -359,12 +365,17 @@ body.gallery-page {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, 1fr);
 
     gap: 25px;
+
 }
 
+
+/* PHOTO FRAME */
+
 .frame {
+
     position: relative;
 
     padding: 10px;
@@ -374,53 +385,72 @@ body.gallery-page {
     border-radius: 18px;
 
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.25);
+        0 8px 25px rgba(0,0,0,0.25);
 
     overflow: hidden;
 
     transition:
-        transform .4s,
-        box-shadow .4s;
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+
 }
 
-.frame:hover {
-    transform:
-        translateY(-10px)
-        scale(1.03);
 
-    box-shadow:
-        0 20px 40px rgba(0,0,0,0.3);
-}
+/* PHOTO */
 
 .frame img {
+
     display: block;
 
     width: 100%;
 
-    height: 280px;
+    height: 230px;
 
     object-fit: cover;
 
     border-radius: 12px;
 
     transition:
-        transform .5s;
+        transform 0.5s ease;
+
+}
+
+
+/* HOVER */
+
+.frame:hover {
+
+    transform:
+        translateY(-8px)
+        rotate(1deg);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,0.30);
+
 }
 
 .frame:hover img {
+
     transform: scale(1.08);
+
 }
 
+
+/* BUTTON */
+
 .center {
+
     text-align: center;
 
-    margin: 40px 0 20px;
+    margin: 40px 0 25px;
+
 }
 
 .center button {
+
     border: none;
 
-    padding: 16px 30px;
+    padding: 16px 32px;
 
     border-radius: 50px;
 
@@ -428,7 +458,7 @@ body.gallery-page {
 
     color: #ff4d6d;
 
-    font-size: 18px;
+    font-size: 19px;
 
     font-weight: bold;
 
@@ -438,13 +468,92 @@ body.gallery-page {
         0 10px 25px rgba(0,0,0,0.25);
 
     transition:
-        transform .3s;
+        transform .3s ease,
+        box-shadow .3s ease;
+
 }
 
 .center button:hover {
+
     transform: scale(1.08);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.30);
+
 }
 
+
+/* =====================================================
+   MOBILE GALLERY
+===================================================== */
+
+@media (max-width: 700px) {
+
+    body.gallery-page {
+
+        padding: 20px 12px;
+
+    }
+
+    .heading {
+
+        font-size: 28px;
+
+        margin-bottom: 25px;
+
+    }
+
+    .gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 15px;
+
+    }
+
+    .frame {
+
+        padding: 7px;
+
+        border-radius: 13px;
+
+    }
+
+    .frame img {
+
+        height: 180px;
+
+        border-radius: 9px;
+
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+
+    }
+
+    .frame img {
+
+        height: 150px;
+
+    }
+
+    .heading {
+
+        font-size: 25px;
+
+    }
+
+}
 
 /* =====================================================
    PAGE 3 — LETTER
