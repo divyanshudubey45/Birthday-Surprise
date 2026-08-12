@@ -406,7 +406,7 @@ body.gallery-page {
 
     height: auto;
 
-    max-height: 350px;
+    max-height: none;
 
     object-fit: contain;
 
@@ -524,7 +524,7 @@ body.gallery-page {
 
     .frame img {
     height: auto;
-    max-height: 250px;
+    max-height: none;
     border-radius: 9px;
     object-fit: contain;
 }
@@ -544,7 +544,7 @@ body.gallery-page {
 
     .frame img {
     height: auto;
-    max-height: 220px;
+    max-height: none;
     object-fit: contain;
 }
 
