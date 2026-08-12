@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Birthday Surprise 🎂</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- LOCK / COUNTDOWN SCREEN -->
-    <div id="lockedScreen">
 
-        <div class="lock-card">
+<!-- =====================================================
+     LOCK / COUNTDOWN
+===================================================== -->
 
-            <div class="lock-icon">🎁</div>
+<div id="lockedScreen">
 
-            <h1>Your Birthday Surprise</h1>
+    <div class="lock-card">
 
-            <p class="coming-text">
-                Something special is waiting for you ❤️
+        <div class="lock-icon">
+            🎁
+        </div>
+
+        <h1 id="lockTitle">
+            Your Birthday Surprise
+        </h1>
+
+        <p id="lockText">
+            Something special is waiting for you ❤️
+        </p>
+
+
+        <!-- COUNTDOWN -->
+
+        <div id="countdownBox">
+
+            <p>
+                Opens on <b>9 September at 5:00 AM</b>
             </p>
-
-            <p>It will open on <b>9 September</b> at <b>5:00 AM</b>.</p>
 
             <div class="countdown">
 
@@ -50,272 +70,598 @@
 
             </div>
 
-            <p id="closedMessage"></p>
-
         </div>
 
-    </div>
 
+        <!-- PASSWORD -->
 
-    <!-- BIRTHDAY PAGE -->
-    <div id="birthdayPage">
+        <div id="passwordBox">
 
-        <!-- Floating decorations -->
-        <div class="balloon balloon1">🎈</div>
-        <div class="balloon balloon2">🎈</div>
-        <div class="balloon balloon3">🎈</div>
-
-        <div class="heart heart1">❤️</div>
-        <div class="heart heart2">💖</div>
-        <div class="heart heart3">💕</div>
-
-        <div class="sparkle sparkle1">✨</div>
-        <div class="sparkle sparkle2">⭐</div>
-        <div class="sparkle sparkle3">✨</div>
-
-
-        <div class="birthday-container">
-
-            <div class="small-title">
-                🎉 TODAY IS YOUR SPECIAL DAY 🎉
-            </div>
-
-            <h1>
-                Happy Birthday
-                <span>Anukriti</span>
-            </h1>
-
-            <p class="subtitle">
-                Wishing you a day filled with happiness,
-                love, laughter and beautiful memories ❤️
+            <p>
+                🔐 Enter the secret password
             </p>
 
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Enter password"
+            >
 
-            <!-- Cake -->
-            <div class="cake-area">
-
-                <div class="flame">🔥</div>
-
-                <div class="cake">
-                    🎂
-                </div>
-
-            </div>
-
-
-            <!-- Surprise button -->
-            <button class="surprise-button" onclick="openSurprise()">
-
-                🎁 Open Your Surprise
-
+            <button onclick="checkPassword()">
+                Unlock ❤️
             </button>
+
+            <p id="passwordMessage"></p>
 
         </div>
 
+
+        <p id="closedMessage"></p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     BIRTHDAY PAGE
+===================================================== -->
+
+<div id="birthdayPage">
+
+
+    <!-- BALLOONS -->
+
+    <div class="balloon balloon1">
+        🎈
+    </div>
+
+    <div class="balloon balloon2">
+        🎈
+    </div>
+
+    <div class="balloon balloon3">
+        🎈
     </div>
 
 
-    <!-- CONFETTI -->
-    <div id="confetti"></div>
+    <!-- HEARTS -->
+
+    <div class="heart heart1">
+        ❤️
+    </div>
+
+    <div class="heart heart2">
+        💖
+    </div>
+
+    <div class="heart heart3">
+        💕
+    </div>
+
+
+    <!-- SPARKLES -->
+
+    <div class="sparkle sparkle1">
+        ✨
+    </div>
+
+    <div class="sparkle sparkle2">
+        ⭐
+    </div>
+
+    <div class="sparkle sparkle3">
+        ✨
+    </div>
+
+
+
+    <div class="birthday-container">
+
+
+        <div class="small-title">
+            🎉 TODAY IS YOUR SPECIAL DAY 🎉
+        </div>
+
+
+        <h1>
+
+            Happy Birthday
+
+            <span>
+                [Name]
+            </span>
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            Wishing you a day filled with happiness,
+            love, laughter and beautiful memories ❤️
+
+        </p>
+
+
+        <!-- CAKE -->
+
+        <div class="cake-area">
+
+            <div class="flame">
+                🔥
+            </div>
+
+            <div class="cake">
+                🎂
+            </div>
+
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <button
+            class="surprise-button"
+            onclick="openSurprise()">
+
+            🎁 Open Your Surprise
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- CONFETTI -->
+
+<div id="confetti"></div>
+
 
 
 <script>
 
-    /*
-    ====================================================
-       BIRTHDAY TIME SETTINGS
-    ====================================================
 
-       Date: 9 September 2026
-       Start: 5:00 AM IST
-       End:   11:59 PM IST
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+
+/*
+   Birthday:
+   9 September 2026
+
+   Opens:
+   5:00 AM IST
+
+   Closes:
+   11:59 PM IST
+*/
+
+
+const startTime =
+    new Date("2026-09-09T05:00:00+05:30");
+
+
+const endTime =
+    new Date("2026-09-09T23:59:59+05:30");
+
+
+
+/*
+   CHANGE THIS PASSWORD
+*/
+
+const correctPassword =
+    "YOUR_PASSWORD";
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const lockedScreen =
+    document.getElementById("lockedScreen");
+
+
+const birthdayPage =
+    document.getElementById("birthdayPage");
+
+
+const countdownBox =
+    document.getElementById("countdownBox");
+
+
+const passwordBox =
+    document.getElementById("passwordBox");
+
+
+const closedMessage =
+    document.getElementById("closedMessage");
+
+
+const passwordMessage =
+    document.getElementById("passwordMessage");
+
+
+
+/* =====================================================
+   CHECK TIME
+===================================================== */
+
+function checkBirthdayTime() {
+
+    const now =
+        new Date();
+
+
+    /*
+       BEFORE 5 AM
     */
 
-    const startTime =
-        new Date("2026-08-12T05:00:00+05:30");
+    if (now < startTime) {
 
-    const endTime =
-        new Date("2026-08-12T23:59:59+05:30");
+        lockedScreen.style.display =
+            "flex";
 
+        birthdayPage.style.display =
+            "none";
 
-    const lockedScreen =
-        document.getElementById("lockedScreen");
+        countdownBox.style.display =
+            "block";
 
-    const birthdayPage =
-        document.getElementById("birthdayPage");
+        passwordBox.style.display =
+            "none";
 
-    const closedMessage =
-        document.getElementById("closedMessage");
+        updateCountdown();
 
-
-    function checkBirthdayTime() {
-
-        const now = new Date();
+    }
 
 
-        // Before birthday
-        if (now < startTime) {
+    /*
+       5 AM TO 11:59 PM
+    */
 
-            lockedScreen.style.display = "flex";
-            birthdayPage.style.display = "none";
+    else if (
+        now >= startTime &&
+        now <= endTime
+    ) {
 
-            updateCountdown();
+        /*
+           Check whether already unlocked
+        */
+
+        if (
+            sessionStorage.getItem(
+                "birthdayUnlocked"
+            ) === "true"
+        ) {
+
+            showBirthdayPage();
 
         }
 
-        // Birthday is active
-        else if (now >= startTime && now <= endTime) {
-
-            lockedScreen.style.display = "none";
-            birthdayPage.style.display = "flex";
-
-            createConfetti();
-
-        }
-
-        // Birthday finished
         else {
 
-            lockedScreen.style.display = "flex";
-            birthdayPage.style.display = "none";
+            lockedScreen.style.display =
+                "flex";
 
-            document.querySelector(".lock-icon").innerHTML = "🔒";
+            birthdayPage.style.display =
+                "none";
 
-            document.querySelector(".lock-card h1").innerHTML =
-                "Birthday Surprise Closed";
+            countdownBox.style.display =
+                "none";
 
-            document.querySelector(".coming-text").innerHTML =
-                "The special surprise has ended ❤️";
-
-            closedMessage.innerHTML =
-                "Thank you for visiting! 🎂💖";
+            passwordBox.style.display =
+                "block";
 
         }
-
-    }
-
-
-    // Countdown
-    function updateCountdown() {
-
-        const now = new Date();
-
-        const difference =
-            startTime - now;
-
-
-        if (difference <= 0) {
-            return;
-        }
-
-
-        const days =
-            Math.floor(
-                difference / (1000 * 60 * 60 * 24)
-            );
-
-
-        const hours =
-            Math.floor(
-                (difference / (1000 * 60 * 60)) % 24
-            );
-
-
-        const minutes =
-            Math.floor(
-                (difference / (1000 * 60)) % 60
-            );
-
-
-        const seconds =
-            Math.floor(
-                (difference / 1000) % 60
-            );
-
-
-        document.getElementById("days").innerText =
-            String(days).padStart(2, "0");
-
-        document.getElementById("hours").innerText =
-            String(hours).padStart(2, "0");
-
-        document.getElementById("minutes").innerText =
-            String(minutes).padStart(2, "0");
-
-        document.getElementById("seconds").innerText =
-            String(seconds).padStart(2, "0");
 
     }
 
 
     /*
-       Surprise button
-       Goes to your gallery page
+       AFTER 11:59 PM
     */
 
-    function openSurprise() {
+    else {
+
+        lockedScreen.style.display =
+            "flex";
+
+        birthdayPage.style.display =
+            "none";
+
+        countdownBox.style.display =
+            "none";
+
+        passwordBox.style.display =
+            "none";
+
+
+        document.getElementById(
+            "lockTitle"
+        ).innerHTML =
+            "Birthday Surprise Closed 🔒";
+
+
+        document.getElementById(
+            "lockText"
+        ).innerHTML =
+            "This birthday surprise has ended. ❤️";
+
+
+        closedMessage.innerHTML =
+            "Thank you for visiting! 🎂💖";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   PASSWORD CHECK
+===================================================== */
+
+function checkPassword() {
+
+    const enteredPassword =
+        document.getElementById(
+            "passwordInput"
+        ).value;
+
+
+    if (
+        enteredPassword ===
+        correctPassword
+    ) {
+
+        /*
+           Remember login
+        */
+
+        sessionStorage.setItem(
+            "birthdayUnlocked",
+            "true"
+        );
+
+
+        passwordMessage.style.color =
+            "#00ff88";
+
+        passwordMessage.innerHTML =
+            "🎉 Correct! Opening your surprise...";
+
 
         createConfetti();
 
+
         setTimeout(function() {
 
-            window.location.href =
-                "gallery.html";
+            showBirthdayPage();
 
-        }, 1000);
+        }, 700);
 
     }
+
+    else {
+
+        passwordMessage.style.color =
+            "#ffdddd";
+
+        passwordMessage.innerHTML =
+            "❌ Incorrect password. Try again!";
+
+        document.getElementById(
+            "passwordInput"
+        ).value = "";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SHOW BIRTHDAY PAGE
+===================================================== */
+
+function showBirthdayPage() {
+
+    lockedScreen.style.display =
+        "none";
+
+    birthdayPage.style.display =
+        "flex";
+
+    createConfetti();
+
+}
+
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function updateCountdown() {
+
+    const now =
+        new Date();
+
+
+    const difference =
+        startTime - now;
+
+
+    if (difference <= 0) {
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference /
+            1000) % 60
+        );
+
+
+    document.getElementById(
+        "days"
+    ).innerText =
+        String(days).padStart(2, "0");
+
+
+    document.getElementById(
+        "hours"
+    ).innerText =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById(
+        "minutes"
+    ).innerText =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById(
+        "seconds"
+    ).innerText =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+
+/* =====================================================
+   OPEN GALLERY
+===================================================== */
+
+function openSurprise() {
+
+    createConfetti();
+
+
+    setTimeout(function() {
+
+        window.location.href =
+            "gallery.html";
+
+    }, 800);
+
+}
+
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti() {
+
+    const container =
+        document.getElementById(
+            "confetti"
+        );
 
 
     /*
-       Confetti
+       Don't create unlimited confetti
     */
 
-    function createConfetti() {
+    if (
+        container.children.length > 100
+    ) {
 
-        const container =
-            document.getElementById("confetti");
-
-
-        for (let i = 0; i < 80; i++) {
-
-            const piece =
-                document.createElement("div");
-
-            piece.classList.add("confetti-piece");
-
-
-            piece.style.left =
-                Math.random() * 100 + "%";
-
-
-            piece.style.animationDelay =
-                Math.random() * 3 + "s";
-
-
-            piece.style.animationDuration =
-                (Math.random() * 3 + 2) + "s";
-
-
-            container.appendChild(piece);
-
-        }
+        return;
 
     }
 
 
-    // Run immediately
-    checkBirthdayTime();
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
+        const piece =
+            document.createElement(
+                "div"
+            );
 
 
-    // Update every second
-    setInterval(function() {
+        piece.classList.add(
+            "confetti-piece"
+        );
 
-        checkBirthdayTime();
 
-    }, 1000);
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+
+        piece.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        piece.style.animationDuration =
+            (
+                Math.random() * 3 + 2
+            ) + "s";
+
+
+        container.appendChild(
+            piece
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkBirthdayTime();
+
+
+setInterval(
+    checkBirthdayTime,
+    1000
+);
 
 </script>
 
+
 </body>
+
 </html>
